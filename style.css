@@ -1,0 +1,224 @@
+:root {
+  --paper: #f1efe9;
+  --ink: #1b2a41;
+  --muted: #4e5b6e;
+  --accent: #ffc233;
+  --line: #c9c5b8;
+  --font: "Trebuchet MS", "Segoe UI", Tahoma, Verdana, sans-serif;
+  --measure: 62ch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Layout: fixed side column, scrolling content column */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 38%) 1fr;
+  min-height: 100vh;
+}
+
+.side {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 2.5rem;
+  background: var(--accent);
+}
+
+.name {
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.role {
+  margin: 1.5rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.year {
+  margin: 0.25rem 0 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.nav a:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* Content column */
+.content {
+  padding: 4rem 3rem 3rem;
+  max-width: calc(var(--measure) + 6rem);
+}
+
+.content section {
+  padding-bottom: 3.5rem;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.content section:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.content h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.content h3 {
+  margin: 1.75rem 0 0.75rem;
+  font-size: 1.125rem;
+}
+
+.content p {
+  max-width: var(--measure);
+  margin: 0 0 1rem;
+}
+
+/* Skills */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tags li {
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.projects li {
+  padding: 1.25rem 1.5rem;
+  border: 2px dashed var(--muted);
+  color: var(--muted);
+}
+
+.projects h3 {
+  margin-top: 0;
+  color: var(--ink);
+}
+
+.projects p {
+  margin-bottom: 0;
+}
+
+.footer {
+  padding: 1.5rem 3rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Tablet and mobile: stack the columns */
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    position: static;
+    height: auto;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+
+  .content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .footer {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
